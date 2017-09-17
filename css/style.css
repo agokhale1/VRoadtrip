@@ -1,0 +1,182 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+h1 {
+    font-size: 2.5em;
+}
+
+button {
+    -moz-box-shadow:inset 0px 1px 0px 0px #54a3f7;
+    -webkit-box-shadow:inset 0px 1px 0px 0px #54a3f7;
+    box-shadow:inset 0px 1px 0px 0px #54a3f7;
+    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #03689e), color-stop(1, #012a5f));
+    background:-moz-linear-gradient(top, #03689e 5%, #012a5f 100%);
+    background:-webkit-linear-gradient(top, #03689e 5%, #012a5f 100%);
+    background:-o-linear-gradient(top, #03689e 5%, #012a5f 100%);
+    background:-ms-linear-gradient(top, #03689e 5%, #012a5f 100%);
+    background:linear-gradient(to bottom, #03689e 5%, #012a5f 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#03689e', endColorstr='#012a5f', GradientType=0);
+    background-color:#03689e;
+    -moz-border-radius:3px;
+    -webkit-border-radius:3px;
+    border-radius:3px;
+    border:1px solid #124d77;
+    outline: none;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family:Arial;
+    font-size:13px;
+    padding:6px 24px;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #154682;
+}
+button:hover {
+    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #012a5f), color-stop(1, #03689e));
+    background:-moz-linear-gradient(top, #012a5f 5%, #03689e 100%);
+    background:-webkit-linear-gradient(top, #012a5f 5%, #03689e 100%);
+    background:-o-linear-gradient(top, #012a5f 5%, #03689e 100%);
+    background:-ms-linear-gradient(top, #012a5f 5%, #03689e 100%);
+    background:linear-gradient(to bottom, #012a5f 5%, #03689e 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#012a5f', endColorstr='#03689e', GradientType=0);
+    background-color:#012a5f;
+}
+button:active {
+    position:relative;
+    top:1px;
+}
+
+label {
+    margin-right: 1em;
+}
+
+input[type="text"]::-webkit-input-placeholder {
+    color: white;
+}
+input[type="text"]:-ms-input-placeholder {
+    color: white;
+}
+input[type="text"]::-moz-placeholder {
+    opacity: 1;
+    color: white;
+}
+input[type="text"]:-moz-placeholder {
+    opacity: 1;
+    color: white;
+}
+
+.header {
+    position: fixed;
+    background-image: url("../images/header.jpg");
+    width: 100%;
+    height: 150px;
+    z-index: 3;
+}
+
+#len_control_in {
+    border: 1px solid black;
+    border-radius: 7px;
+    outline: none;
+    height: 32px;
+    text-align: right;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#map {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    min-height: 400px;
+    height: calc(55vh - 150px);
+}
+
+#frame_container {
+    width: 100%;
+    height: calc(59vh + 150px);
+    transition: opacity 2s ease-in-out;
+}
+
+#intro_content {
+    transition: opacity 2s ease-in-out;
+}
+
+.frame {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    max-height: 100vh;
+    object-fit: contain;
+}
+
+#leftpanel {
+    position: relative;
+    top: 150px;
+    float: left;
+    width: 25%;
+    min-width: 300px;
+}
+
+#rightpanel {
+    position: relative;
+    top: 150px;
+    float: right;
+    width: 75%;
+    height: calc(59vh + 150px);
+    background-color: white;
+    color: black;
+    text-align: center;
+}
+
+#inputdirection {
+    margin: 0;
+    padding: 1.25em 0 0.5em 1em;
+    background-color: #01295F;
+    color: white;
+}
+
+#inputdirection div {
+    display: inline-block;
+    margin: 0 1em 0.5em 0;
+    width: 24px;
+    height: 24px;
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    background-position: left top;
+}
+
+#inputsettings {
+    padding: 0.25em 0 2em 1em;
+    background-color: #01295F;
+    color: white;
+}
+
+#from, #to {
+    margin-bottom: 1.25em;
+    padding-bottom: 0.25em;
+    border: none;
+    border-bottom: 1px solid white;
+    outline: none;
+    background-color: inherit;
+    color: inherit;
+    height: 24px;
+    width: 80%;
+}
+
+.hidden {
+    display: none;
+}
+
+.selected:before {
+    content:' \25CF';
+    position: absolute;
+    top: -16px;
+    left: 3.5px;
+    font-size: 75px;
+    color: lightblue;
+    opacity: .25;
+}

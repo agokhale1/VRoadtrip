@@ -1,17 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
-
-	<head>
-
-		<meta charset="UTF-8"/>
-		<title> Aneesh Gokhale </title>
-
-	</head>
-
-	<body>
+    
+    <head>
+        
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <title> HelloWorld2017 </title>
+        
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        
+    </head>
+    
+    <body>
+        
+        <header>
+			
+			<div class="header"></div>
+			
+		</header>
 		
-		<p> Website under construction! </p>
-		
-	</body>
-
+		<div id="content">
+			
+			<div id="leftpanel">
+				
+				<div id="inputdirection">
+					
+					<div id="selectCar" onclick="selectTravelType('car')" class="selected" style="background-image: url(images/car.png);"></div>
+					<br>
+					<input type="text" name="from" id="from" spellcheck="false" placeholder="Enter a starting location..." title="Press enter to submit route"/>
+					<input type="text" name="to" id="to" spellcheck="false" placeholder="Enter a destination..." title="Press enter to submit route."/>
+					
+				</div>
+				
+				<div id="inputsettings">
+				
+					<input type="radio" name="settings" id="fps_sel" checked/>
+					<label for="fps_sel"> Video FPS </label>
+					<input type="radio" name="settings" id="max_sel"/>
+					<label for="max_sel"> Video Length (s) </label>
+					<br>
+					<input type="number" name="len" id="len_control_in" oninput="validateNumberInput(this, true)" onblur="validateNumberInput(this, true)" title="Press enter to submit route" min=0 value=1 />
+					<br><br>
+					<button id="lego_button" onclick="calculateAndDisplayRoute()" class="">Let's Go!</button>
+					<button id="play_button" class="hidden">Play</button>
+				    <button id="restart_button" onclick="calculateAndDisplayRoute()" class="hidden">Restart</button>
+					
+				</div>
+				
+				<div id="map"></div>
+				
+			</div>
+			
+			<div id="rightpanel">
+			
+			    <div id="intro_content">
+				
+			        <h1>Welcome to VRoadtrip!</h1>
+					
+			    </div>
+			    
+				<div id="frame_container"></div>
+				<br>
+				
+			</div>
+			
+		</div>
+        
+        <script type="text/javascript" src="js/render.js"></script>
+        <script type="text/javascript" src="js/streetview.js"></script>
+        <script type="text/javascript" src="js/maps.js"></script>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBU_RCZG_0wHYOdoFHoTugDWh-BMu4c7tI&amp;callback=initMap"></script>
+        <script type="text/javascript" src="js/code.js"></script>
+        
+    </body>
+    
 </html>
