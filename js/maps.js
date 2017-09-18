@@ -6,7 +6,7 @@ var marker;
 
 function initMap() {
 
-    // Clear any from allFrames
+    // Clear allFrames
     clearFrames();
 
     directionsService = new google.maps.DirectionsService;
@@ -28,6 +28,10 @@ function initMap() {
 }
 
 function calculateAndDisplayRoute() {
+    
+    // Send analytics event
+    ga('send', 'event', { eventCategory: 'API_request', eventAction: 'directions'});
+    
     clearFrames();
     
     directionsService.route({
