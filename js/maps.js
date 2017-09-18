@@ -1,14 +1,13 @@
 var SMOOTHING_INTERVAL = 1;
-var currentPhoto = 0;
 var directionsService;
 var directionsDisplay;
+var streetViewService;
+var panorama;
 var marker;
 
 function initMap() {
 
-    // Clear allFrames
-    clearFrames();
-
+    // Create directions service and map
     directionsService = new google.maps.DirectionsService;
     directionsDisplay = new google.maps.DirectionsRenderer;
     var map = new google.maps.Map(document.getElementById("map"), {
@@ -25,6 +24,13 @@ function initMap() {
         
     marker.setMap(map);
     
+    // Create interactive Street View panorama
+    streetViewService = new google.maps.StreetViewService();
+    panorama = new google.maps.StreetViewPanorama(
+        document.getElementById('final_panorama'), {
+        position: {lat: 40.427353, lng: -86.9166654 }
+    });
+
 }
 
 function calculateAndDisplayRoute() {
