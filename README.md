@@ -2,7 +2,7 @@
 
 ### Winner of the Hello World Hackathon 2017 Best Web Development Application ###
 
-VRoadtrip takes a Google Maps driving route between two points and turns it into a timelapse of Street View images--a virtual roadtrip.
+VRoadtrip takes a Google Maps driving route between two points and turns it into a timelapse of Street View images—a virtual roadtrip.
 
 Demo: [https://agokhale1.github.io/](https://agokhale1.github.io/)
 
