@@ -1,4 +1,20 @@
 var FPS = 1;
+var allFrames = [];
+var pos = 0;
+
+// Access routine for allFrames
+function addFrame(img) {
+    allFrames[pos++] = img;
+}
+
+// Access routine for allFrames
+function clearFrames() {
+    clearInterval();
+    frameCont.innerHTML = ""; // Clear DOM imgs
+    introCont.innerHTML = "<h2>Loading...</h2>";
+    allFrames = [];
+    pos = 0;
+}
 
 function render(startFrom) {
     startFrom = (startFrom) ? startFrom : 1;
