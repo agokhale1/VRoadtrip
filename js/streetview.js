@@ -22,6 +22,9 @@ function clearFrames() {
 
 function getStreetViewImage(lat, long, heading) {
     
+    // Send analytics event
+    ga('send', 'event', { eventCategory: 'API_request', eventAction: 'street_view' });
+    
     var URL;
     if (heading) {
         URL = "https://maps.googleapis.com/maps/api/streetview?size=" + svWidth + "x" + svHeight + "&location=" + lat + "," + long + "&fov=" + svFOV + "&heading=" + heading + "&pitch=" + svPitch + "&key=" + SV_API_KEY;
