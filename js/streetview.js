@@ -5,21 +5,6 @@ var svFOV = 120;
 var svPitch = 0;
 var svHeading = 0; // Default to North
 
-var allFrames = [];
-var pos = 0;
-
-// Access routine for allFrames
-function addFrame(img) {
-    allFrames[pos++] = img;
-}
-
-// Access routine for allFrames
-function clearFrames() {
-    clearInterval();
-    allFrames = [];
-    pos = 0;
-}
-
 function getStreetViewImage(lat, long, heading) {
     
     // Send analytics event
