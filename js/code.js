@@ -6,6 +6,7 @@ var lenRadio = document.getElementById("fps_sel");
 var lenIn = document.getElementById("len_control_in");
 var introCont = document.getElementById("intro_content");
 var frameCont = document.getElementById("frame_container");
+var finalPano = document.getElementById("final_panorama");
 
 function swapBodyContent(content) {
     if (content === "intro") {
