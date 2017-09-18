@@ -1,4 +1,4 @@
-var SV_API_KEY = "AIzaSyAEKYGyNzejs5MeSK6K78HdeiuPEXbsELw";
+var SV_API_KEY = "AIzaSyAwiNJOEGV4Xm95TpD6KiJDcDyEtVHRqrg";
 var svWidth = 640;
 var svHeight = 360;
 var svFOV = 120;
@@ -31,7 +31,7 @@ function getStreetViewImage(lat, long, heading) {
     }
 }
 
-function angleFromCoordinates(lat1, long1, lat2, long2) {
+function headingFromCoordinates(lat1, long1, lat2, long2) {
 
     lat1 = lat1 * (Math.PI/180);
     long1 = long1 * (Math.PI/180);
