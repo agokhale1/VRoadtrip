@@ -8,6 +8,18 @@ var svHeading = 0; // Default to North
 var allFrames = [];
 var pos = 0;
 
+// Access routine for allFrames
+function addFrame(img) {
+    allFrames[pos++] = img;
+}
+
+// Access routine for allFrames
+function clearFrames() {
+    clearInterval();
+    allFrames = [];
+    pos = 0;
+}
+
 function getStreetViewImage(lat, long, heading) {
     
     var URL;
@@ -29,18 +41,6 @@ function getStreetViewImage(lat, long, heading) {
     img.onload = function() {
         img.classList.remove("loading");
     }
-}
-
-// Access routine for allFrames
-function addFrame(img) {
-    allFrames[pos++] = img;
-}
-
-// Access routine for allFrames
-function clearFrames() {
-    clearInterval();
-    allFrames = [];
-    pos = 0;
 }
 
 function angleFromCoordinates(lat1, long1, lat2, long2) {
