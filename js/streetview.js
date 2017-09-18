@@ -1,4 +1,4 @@
-var SV_API_KEY = "AIzaSyAEKYGyNzejs5MeSK6K78HdeiuPEXbsELw"; //
+var SV_API_KEY = "AIzaSyAwiNJOEGV4Xm95TpD6KiJDcDyEtVHRqrg"; // New Street View API key
 var svWidth = 640;
 var svHeight = 360;
 var svFOV = 120;
