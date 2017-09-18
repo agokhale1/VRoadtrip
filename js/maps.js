@@ -30,7 +30,7 @@ function initMap() {
 function calculateAndDisplayRoute() {
     
     // Send analytics event
-    ga('send', 'event', { eventCategory: 'API_request', eventAction: 'directions'});
+    ga('send', 'event', { eventCategory: 'API_request', eventAction: 'directions' });
     
     clearFrames();
     
