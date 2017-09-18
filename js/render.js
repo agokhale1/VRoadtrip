@@ -29,7 +29,7 @@ function render(startFrom) {
       	
       	// Determine user's choice for video length
         var useFPS = lenRadio.checked;
-      	lenIn.value = (lenIn.value === 0) ? 1 : lenIn.value;
+        lenIn.value = (lenIn.value === 0) ? 1 : lenIn.value;
       
         // Calculate FPS
         if (useFPS) {
@@ -38,7 +38,7 @@ function render(startFrom) {
             FPS = allFrames.length / lenIn.value;
         }
 	
-	    // Show first frame
+        // Show first frame
         allFrames[0].classList.remove("hidden");
       
       	// Set marker initial position on point A
@@ -52,7 +52,6 @@ function render(startFrom) {
         // Update UI elements
         var playButton = show("play_button");
         hide("restart_button");
-      	hide("loading_indicator");
       
       	// Play frames when play is clicked
         playButton.onclick = function() {
@@ -61,11 +60,13 @@ function render(startFrom) {
                     clearInterval(interval);
                 }
 
-                if (i == allFrames.length - 1) {
-                  
-                    // Show last frame
-                    allFrames[i - 1].classList.add("hidden");
-                    allFrames[i].classList.remove("hidden");
+                if (i == allFrames.length) {
+
+                    // Show last frame as interactive Street View panorama
+                    show("final_panorama");
+                    google.maps.event.trigger(panorama, 'resize');
+                    swapBodyContent("pano");
+
                     clearInterval(interval);
                   
                 } else {
