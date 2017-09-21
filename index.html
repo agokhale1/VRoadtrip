@@ -3,12 +3,22 @@
     
     <head>
         
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        
-        <title> VRoadtrip </title>
-        
-        <link rel="stylesheet" type="text/css" href="css/style.css">
+	<!-- Global Site Tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-106628056-1"></script>
+	<script>
+	    window.dataLayer = window.dataLayer || [];
+	    function gtag(){dataLayer.push(arguments)};
+	    gtag('js', new Date());
+
+	    gtag('config', 'UA-106628056-1');
+	</script>
+
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+	<title> VRoadtrip </title>
+
+	<link rel="stylesheet" type="text/css" href="css/style.css">
         
     </head>
     
@@ -16,7 +26,7 @@
         
         <header>
 			
-			<div class="header"></div>
+		<div class="header"></div>
 			
 		</header>
 		
@@ -40,7 +50,7 @@
 					<input type="radio" name="settings" id="max_sel"/>
 					<label for="max_sel"> Video Length (s) </label>
 					<br>
-					<input type="number" name="len" id="len_control_in" oninput="validateNumberInput(this, true)" onblur="validateNumberInput(this, true)" title="Press enter to submit route" min=0 value=10 />
+					<input type="number" name="len" id="len_control_in" oninput="validateNumberInput(this)" onblur="validateNumberInput(this)" title="Press enter to submit route" min=0 value=10 />
 					<br><br>
 					<button id="lego_button" onclick="calculateAndDisplayRoute()" class="">Let's Go!</button>
 					<button id="play_button" class="hidden">Play</button>
@@ -54,14 +64,15 @@
 			
 			<div id="rightpanel">
 			
-			    <div id="intro_content">
+			    	<div id="intro_content">
 				
-			        <h1>Welcome to VRoadtrip!</h1>
+			        	<h1>Welcome to VRoadtrip!</h1>
 					
-			    </div>
+			   	 </div>
 			    
 				<div id="frame_container"></div>
-				<br>
+
+                <div id="final_panorama" class="frame hidden"></div>
 				
 			</div>
 			

@@ -1,14 +1,14 @@
-var SV_API_KEY = "AIzaSyAwiNJOEGV4Xm95TpD6KiJDcDyEtVHRqrg"; // New Street View API key
+var SV_API_KEY = "AIzaSyAwiNJOEGV4Xm95TpD6KiJDcDyEtVHRqrg";
 var svWidth = 640;
 var svHeight = 360;
 var svFOV = 120;
 var svPitch = 0;
 var svHeading = 0; // Default to North
 
-var allFrames = [];
-var pos = 0;
-
 function getStreetViewImage(lat, long, heading) {
+    
+    // Send analytics event
+    ga('send', 'event', { eventCategory: 'API_request', eventAction: 'street_view' });
     
     var URL;
     if (heading) {
@@ -31,19 +31,7 @@ function getStreetViewImage(lat, long, heading) {
     }
 }
 
-// Access routine for allFrames
-function addFrame(img) {
-    allFrames[pos++] = img;
-}
-
-// Access routine for allFrames
-function clearFrames() {
-    clearInterval();
-    allFrames = [];
-    pos = 0;
-}
-
-function angleFromCoordinates(lat1, long1, lat2, long2) {
+function headingFromCoordinates(lat1, long1, lat2, long2) {
 
     lat1 = lat1 * (Math.PI/180);
     long1 = long1 * (Math.PI/180);

@@ -6,14 +6,22 @@ var lenRadio = document.getElementById("fps_sel");
 var lenIn = document.getElementById("len_control_in");
 var introCont = document.getElementById("intro_content");
 var frameCont = document.getElementById("frame_container");
+var finalPano = document.getElementById("final_panorama");
 
-function swapBodyContent(type) {
-    if (type !== "frame") {
+function swapBodyContent(content) {
+    if (content === "intro") {
         introCont.style.opacity = 1;
         frameCont.style.opacity = 0;
-    } else {
+        finalPano.style.opacity = 0;
+    } else if (content === "frame"){
         introCont.style.opacity = 0;
         frameCont.style.opacity = 1;
+        finalPano.style.opacity = 0;
+    } else if (content === "pano") {
+        introCont.style.opacity = 0;
+        frameCont.style.opacity = 0;
+        finalPano.style.opacity = 1;
+        show("final_panorama");
     }
 }
 
@@ -51,12 +59,8 @@ function hide(id) {
     return false;
 }
 
-function validateNumberInput(self, fillBlank) {
-        self.value = self.value.replace("-", "").replace("+", "");
-        if (fillBlank && self.value === "") {
-            self.value = 0;
-            return;
-        }
+function validateNumberInput(self) {
+    self.value = self.value.replace("-", "").replace("+", "");
 }
 
 document.onkeydown = function(e) {
