@@ -4,7 +4,7 @@
 
 VRoadtrip takes a Google Maps driving route between two points and turns it into a timelapse of Street View images—a virtual roadtrip.
 
-Demo: [vroadtrip.tk](vroadtrip.tk)
+Demo: [vroadtrip.tk](http://vroadtrip.tk)
 
 ## Uses ##
 
@@ -18,4 +18,3 @@ Demo: [vroadtrip.tk](vroadtrip.tk)
 
 # #
 Built by: [Aneesh](https://github.com/agokhale1), [Jack](https://github.com/jmcker), [Jay](https://github.com/jrixie), and [Kaitlyn](https://github.com/krscholl42)
-
