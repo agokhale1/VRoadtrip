@@ -66,6 +66,9 @@ function calculateAndDisplayRoute() {
                 getStreetViewImage(paths[i].lat(), paths[i].lng(), heading);
             }
 
+            // Send analytics event
+            ga('send', 'event', { eventCategory: 'API_request', eventAction: 'street_view', eventValue: paths.length });
+
             var interval = setInterval(function() {
                 if (document.getElementsByClassName("loading").length === 0) {
 
