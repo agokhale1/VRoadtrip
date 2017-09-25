@@ -4,7 +4,7 @@
 
 VRoadtrip takes a Google Maps driving route between two points and turns it into a timelapse of Street View images—a virtual roadtrip.
 
-Demo: [https://agokhale1.github.io/](https://agokhale1.github.io/)
+Demo: [vroadtrip.tk](vroadtrip.tk)
 
 ## Uses ##
 
