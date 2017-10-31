@@ -28,7 +28,7 @@ button {
     -webkit-border-radius:3px;
     border-radius:3px;
     border:1px solid #124d77;
-    outline: none;
+    /*outline: none;*/
     display:inline-block;
     cursor:pointer;
     color:#ffffff;
