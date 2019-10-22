@@ -122,11 +122,11 @@ input[type="text"]:-moz-placeholder {
     object-fit: contain;
 }
 
-#final_panorama {
+.panorama {
     opacity: 0;
     width: 100%;
     height: inherit;
-    transition: opacity 2s ease-in-out;
+    transition: opacity 1s ease-in-out;
 }
 
 #leftpanel {

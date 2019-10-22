@@ -3,7 +3,8 @@ var currentPhoto = 0;
 var directionsService;
 var directionsDisplay;
 var streetViewService;
-var panorama;
+var start_panorama;
+var final_panorama;
 var marker;
 
 function initMap() {
@@ -16,36 +17,33 @@ function initMap() {
         center: {lat: 40.418505, lng: -86.898281}
     });
     directionsDisplay.setMap(map);
-    
+
     // Create empty marker
     marker = new google.maps.Marker({
         position: {lat: 40.418505, lng: -86.898281},
         map: map
     });
-        
+
     marker.setMap(map);
-    
+
     // Create interactive Street View panorama
     streetViewService = new google.maps.StreetViewService();
-    panorama = new google.maps.StreetViewPanorama(document.getElementById('final_panorama'), {
-        position: {
-            lat: 40.427353, 
-            lng: -86.9166654 
-        }
-    });
+    start_panorama = new google.maps.StreetViewPanorama(document.getElementById('start_panorama'), {});
+    final_panorama = new google.maps.StreetViewPanorama(document.getElementById('final_panorama'), {});
 
 }
 
 function calculateAndDisplayRoute() {
-    
+
     // Send analytics event
     ga('send', 'event', { eventCategory: 'API_request', eventAction: 'directions' });
-    
+
     swapBodyContent('intro');
+    hide("start_panorama");
     hide("final_panorama");
     hide("restart_button");
     clearFrames();
-    
+
     directionsService.route({
         origin: document.getElementById("from").value,
         destination: document.getElementById("to").value,
@@ -62,7 +60,7 @@ function calculateAndDisplayRoute() {
                 if(i != paths.length - 1){
                    var heading = headingFromCoordinates(paths[i].lat(), paths[i].lng(), paths[i + 1].lat(), paths[i + 1].lng());
                 }
-                
+
                 getStreetViewImage(paths[i].lat(), paths[i].lng(), heading);
             }
 
@@ -75,22 +73,45 @@ function calculateAndDisplayRoute() {
                     // Send analytics event
                     ga('send', 'event', { eventCategory: 'API_request', eventAction: 'maps_panorama' });
 
+                    var initialPoint = paths[0];
+                    streetViewService.getPanoramaByLocation(initialPoint, 100, function(response, status) {
+
+                        if (status === 'OK') {
+                            var nearest = response.location.latLng;
+
+                            var heading = headingFromCoordinates(nearest.lat(), nearest.lng(), initialPoint.lat(), initialPoint.lng());
+
+                            start_panorama.setPosition(nearest);
+                            start_panorama.setPov({
+                                heading: heading,
+                                pitch: 0
+                            });
+                            start_panorama.setVisible(true);
+
+                        } else {
+                            startPano.innerHTML = "<h2>We're sorry. Unfortunately, a Street View panorama was not available near your starting location.</h2>"
+                        }
+
+                    });
+
+                    ga('send', 'event', { eventCategory: 'API_request', eventAction: 'maps_panorama' });
+
                     // Set panorama to final position and attempt to calculate proper heading
                     var finalPoint = paths[paths.length - 1];
                     streetViewService.getPanoramaByLocation(finalPoint, 100, function (response, status) {
-                        
+
                         if(status === 'OK'){
 
                             var nearest = response.location.latLng;
 
-                            var heading = headingFromCoordinates(nearest.lat(), nearest.lng(), finalPoint.lat(), finalPoint.lng());          
+                            var heading = headingFromCoordinates(nearest.lat(), nearest.lng(), finalPoint.lat(), finalPoint.lng());
 
-                            panorama.setPosition(nearest);
-                            panorama.setPov({
+                            final_panorama.setPosition(nearest);
+                            final_panorama.setPov({
                                 heading: heading,
                                 pitch: 0
                             });
-                            panorama.setVisible(true);
+                            final_panorama.setVisible(true);
 
                         } else {
                             finalPano.innerHTML = "<h2>We're sorry. Unfortunately, a Street View panorama was not available near your final desination.</h2>";
@@ -100,7 +121,7 @@ function calculateAndDisplayRoute() {
 
                     // Display frame container and wait for user
                     render(0);
-                    clearInterval(interval); 
+                    clearInterval(interval);
                 }
             }, 100);
 
@@ -110,4 +131,4 @@ function calculateAndDisplayRoute() {
         }
     });
 }
-    
+

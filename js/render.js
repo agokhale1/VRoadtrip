@@ -17,31 +17,30 @@ function clearFrames() {
 }
 
 function render(startFrom) {
-    startFrom = (startFrom) ? startFrom : 1;
+    startFrom = (startFrom) ? startFrom : 0;
 
     if (allFrames.length === 0) {
         alert("No frames found.");
         return;
     } else {
 
-      	// Show frame_container
-        swapBodyContent('frame');
-      	
-      	// Determine user's choice for video length
+        // Show the starting panorama
+        show("start_panorama");
+        google.maps.event.trigger(start_panorama, 'resize');
+        swapBodyContent("start_pano");
+
+        // Determine user's choice for video length
         var useFPS = lenRadio.checked;
         lenIn.value = (lenIn.value === 0) ? 1 : lenIn.value;
-      
+
         // Calculate FPS
         if (useFPS) {
-            FPS = (lenIn.value) ? lenIn.value : 1;
+            FPS = lenIn.value;
         } else {
             FPS = allFrames.length / lenIn.value;
         }
-	
-        // Show first frame
-        allFrames[0].classList.remove("hidden");
-      
-      	// Set marker initial position on point A
+
+        // Set marker initial position on point A
         marker.setPosition({
             lat: parseFloat(allFrames[0].getAttribute("data-lat")),
             lng: parseFloat(allFrames[0].getAttribute("data-lng"))
@@ -52,9 +51,13 @@ function render(startFrom) {
         // Update UI elements
         var playButton = show("play_button");
         hide("restart_button");
-      
-      	// Play frames when play is clicked
+
+        // Play frames when play is clicked
         playButton.onclick = function() {
+            // Show frame_container
+            swapBodyContent('frame');
+            clearInterval();
+
             var interval = setInterval(function() {
                 if (i >= allFrames.length) {
                     clearInterval(interval);
@@ -64,14 +67,16 @@ function render(startFrom) {
 
                     // Show last frame as interactive Street View panorama
                     show("final_panorama");
-                    google.maps.event.trigger(panorama, 'resize');
-                    swapBodyContent("pano");
+                    google.maps.event.trigger(final_panorama, 'resize');
+                    swapBodyContent("final_pano");
 
                     clearInterval(interval);
-                  
+
                 } else {
                     // Show next frame
-                    allFrames[i - 1].classList.add("hidden");
+                    if (i !== 0) {
+                        allFrames[i - 1].classList.add("hidden");
+                    }
                     allFrames[i].classList.remove("hidden");
 
                     // Update marker position
@@ -79,9 +84,9 @@ function render(startFrom) {
                         lat: parseFloat(allFrames[i].getAttribute("data-lat")),
                         lng: parseFloat(allFrames[i].getAttribute("data-lng"))
                     });
-                  
+
                 }
-              
+
                 i++;
             }, 1 / FPS * 1000);
 
