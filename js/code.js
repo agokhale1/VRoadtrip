@@ -6,21 +6,33 @@ var lenRadio = document.getElementById("fps_sel");
 var lenIn = document.getElementById("len_control_in");
 var introCont = document.getElementById("intro_content");
 var frameCont = document.getElementById("frame_container");
+var startPano = document.getElementById("start_panorama");
 var finalPano = document.getElementById("final_panorama");
 
 function swapBodyContent(content) {
     if (content === "intro") {
         introCont.style.opacity = 1;
         frameCont.style.opacity = 0;
+        startPano.style.opacity = 0;
         finalPano.style.opacity = 0;
     } else if (content === "frame"){
         introCont.style.opacity = 0;
         frameCont.style.opacity = 1;
+        startPano.style.opacity = 0;
         finalPano.style.opacity = 0;
-    } else if (content === "pano") {
+    } else if (content === "start_pano") {
         introCont.style.opacity = 0;
         frameCont.style.opacity = 0;
+        startPano.style.opacity = 1;
+        finalPano.style.opacity = 0;
+        show("start_panorama");
+        hide("final_panorama");
+    } else if (content === "final_pano") {
+        introCont.style.opacity = 0;
+        frameCont.style.opacity = 0;
+        startPano.style.opacity = 0;
         finalPano.style.opacity = 1;
+        hide("start_panorama");
         show("final_panorama");
     }
 }
@@ -66,7 +78,7 @@ function validateNumberInput(self) {
 document.onkeydown = function(e) {
     if (document.activeElement === startLoc || document.activeElement === endDest || document.activeElement === lenIn) {
         var code = e.keyCode ? e.keyCode : e.which;
-        
+
         if (code === 13) {
             calculateAndDisplayRoute();
         }

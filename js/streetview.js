@@ -1,4 +1,4 @@
-var SV_API_KEY = "AIzaSyAwiNJOEGV4Xm95TpD6KiJDcDyEtVHRqrg";
+var SV_API_KEY = "AIzaSyBU_RCZG_0wHYOdoFHoTugDWh-BMu4c7tI";
 var svWidth = 640;
 var svHeight = 360;
 var svFOV = 120;
@@ -6,7 +6,7 @@ var svPitch = 0;
 var svHeading = 0; // Default to North
 
 function getStreetViewImage(lat, long, heading) {
-    
+
     var URL;
     if (heading) {
         URL = "https://maps.googleapis.com/maps/api/streetview?size=" + svWidth + "x" + svHeight + "&location=" + lat + "," + long + "&fov=" + svFOV + "&heading=" + heading + "&pitch=" + svPitch + "&key=" + SV_API_KEY;
@@ -30,10 +30,10 @@ function getStreetViewImage(lat, long, heading) {
 
 function headingFromCoordinates(lat1, long1, lat2, long2) {
 
-    lat1 = lat1 * (Math.PI/180);
-    long1 = long1 * (Math.PI/180);
-    lat2 = lat2 * (Math.PI/180);
-    long2 = long2 * (Math.PI/180);
+    lat1 = lat1 * (Math.PI / 180);
+    long1 = long1 * (Math.PI / 180);
+    lat2 = lat2 * (Math.PI / 180);
+    long2 = long2 * (Math.PI / 180);
 
     var diffLon = (long2 - long1);
 
@@ -42,8 +42,8 @@ function headingFromCoordinates(lat1, long1, lat2, long2) {
             * Math.cos(lat2) * Math.cos(diffLon);
 
     var heading = Math.atan2(y, x);
-    heading = heading * (180/Math.PI);
+    heading = heading * (180 / Math.PI);
     heading = (heading + 360) % 360;
 
     return heading;
-} 
+}
